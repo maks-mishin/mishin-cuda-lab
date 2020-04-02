@@ -146,6 +146,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="filter_img.h" />
+    <ClInclude Include="matrix_multiplication.h" />
+    <ClInclude Include="params.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="filter_img.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="matrix_multiplication.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
