@@ -2,7 +2,8 @@
 //file matrix_multiplication.h
 
 //Function print matrix
-void print_matrix(const float *Matrix);
+template <class T>
+void print_matrix(const T *Matrix);
 
 //Make random number from min to max
 float get_random_number(int min, int max);

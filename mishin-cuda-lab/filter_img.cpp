@@ -32,7 +32,7 @@ struct Picture
 };
 
 // Function init SOA
-void init_SOA(Picture& picture)
+void init_SOA(Picture picture)
 {
 	for (size_t i = 0; i < SIZE; i++)
 	{
@@ -43,7 +43,7 @@ void init_SOA(Picture& picture)
 }
 
 // Function init AOS
-void init_AOS(std::vector<Pixel> &vec_pixels)
+void init_AOS(Pixel *vec_pixels)
 {
 	Pixel temp;
 	for (size_t i = 0; i < SIZE; i++)
@@ -51,7 +51,7 @@ void init_AOS(std::vector<Pixel> &vec_pixels)
 		temp.red = get_random_number(0, 255);
 		temp.green = get_random_number(0, 255);
 		temp.blue = get_random_number(0, 255);
-		vec_pixels.push_back(temp);
+		vec_pixels[i] = temp;
 	}
 }
 
@@ -69,11 +69,11 @@ void print_matrix(Picture &picture)
 }
 
 //Function print matrix with use pattern AOS
-void print_matrix(std::vector<Pixel> &vec_pixels)
+void print_matrix(Pixel *vec_pixels)
 {
-	for (size_t i = 0; i < vec_pixels.size(); i++)
+	for (size_t i = 0; i < SIZE; i++)
 	{
-		std::cout << "(" << vec_pixels.at(i).red << ", " << vec_pixels.at(i).green << ", " << vec_pixels.at(i).blue << ")" << "\t";
+		std::cout << "(" << vec_pixels[i].red << ", " << vec_pixels[i].green << ", " << vec_pixels[i].blue << ")" << "\t";
 		if ((i + 1) % 10 == 0)
 			std::cout << std::endl;
 	}
@@ -81,7 +81,7 @@ void print_matrix(std::vector<Pixel> &vec_pixels)
 
 
 //Function filter picture on host with use SOA
-void filter_SOA_host(Picture& src_pict, Picture& res_pict)
+void filter_SOA_host(Picture src_pict, Picture res_pict)
 {
 	for (size_t i = 0; i < SIZE; i++)
 	{
@@ -107,9 +107,9 @@ void filter_SOA_host(Picture& src_pict, Picture& res_pict)
 }
 
 //Function filter picture on host with use AOS
-void filter_AOS_host(std::vector<Pixel> &vec_pixels, std::vector<Pixel> &vec_pixels_res)
+void filter_AOS_host(Pixel *vec_pixels, Pixel *vec_pixels_res)
 {
-	for (size_t i = 0; i < vec_pixels.size(); i++)
+	for (size_t i = 0; i < SIZE; i++)
 	{
 		if (i < SIZE_M || i >(SIZE - SIZE_M) || (i + 1) % 10 == 0 || i % 10 == 0)
 		{
@@ -132,7 +132,7 @@ void filter_AOS_host(std::vector<Pixel> &vec_pixels, std::vector<Pixel> &vec_pix
 	}
 }
 
-void free_SOA(Picture &picture)
+void free_SOA(Picture picture)
 {
 	free(picture.red_arr);
 	free(picture.green_arr);
@@ -146,7 +146,7 @@ int main()
 	srand(static_cast<unsigned int>(time(0)));
 
 	Picture picture_src, picture_res;
-	std::vector<Pixel> vec_pixels_src, vec_pixels_res;
+	Pixel *vec_pixels_src, *vec_pixels_res;
 
 	double start_SOA, end_SOA,
 		start_AOS, end_AOS;
@@ -160,12 +160,14 @@ int main()
 	picture_res.green_arr = (short*)malloc(byte_size);
 	picture_res.blue_arr = (short*)malloc(byte_size);
 
+	vec_pixels_src = (Pixel*)malloc(byte_size * 3);
+	vec_pixels_res = (Pixel*)malloc(byte_size * 3);
+
 
 	// init picture on host
 	init_SOA(picture_src);
-
 	init_AOS(vec_pixels_src);
-	vec_pixels_res.resize(vec_pixels_src.size());
+
 
 	start_SOA = clock();
 	filter_SOA_host(picture_src, picture_res);

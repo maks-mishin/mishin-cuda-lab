@@ -18,7 +18,7 @@ float get_random_number(int min, int max)
 
 //Function print matrix
 template<class T>
-void print_matrix(const T &Matrix)
+void print_matrix(const T *Matrix)
 {
 	for (int i = 0; i < SIZE; i++)
 	{
@@ -29,7 +29,7 @@ void print_matrix(const T &Matrix)
 }
 
 //Function matrix multiplication on device
-__global__ void device_matMul(const float *A, const float *B, float *C)
+/*__global__ void device_matMul(const float *A, const float *B, float *C)
 {
 	int glob_id = threadIdx.x + blockDim.x*blockIdx.x;
 	if (glob_id < SIZE)
@@ -67,7 +67,7 @@ __global__ void device_matMul_shared(const float* A, const float* B, float* C)
 		}
 		C[i*SIZE_M + j] = temp;
 	}
-}
+}*/
 
 //Function matrix multiplication on host
 void host_matMul(const float *A, const float *B, float *C)
