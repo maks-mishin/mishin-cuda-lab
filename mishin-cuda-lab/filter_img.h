@@ -1,16 +1,29 @@
 #pragma once
 // file filter_img.h
-#include <vector>
+#include "params.h"
 
 
 // Size of array short int
 const int byte_size = SIZE * sizeof(short);
 
-//Array of structures, array - vector<Pixel>
-struct Pixel;
+//Array of structures
+struct Pixel
+{
+	short int red;
+	short int green;
+	short int blue;
+};
 
 //Structure of arrays
-struct Picture;
+struct Picture
+{
+	short int * red_arr;
+	short int * green_arr;
+	short int * blue_arr;
+};
+
+// Function init SOA
+void init_SOA(Picture picture);
 
 // Function init AOS
 void init_AOS(Pixel *vec_pixels);
