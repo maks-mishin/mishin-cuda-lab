@@ -4,9 +4,11 @@
 
 GridLaplase::GridLaplase()
 {
+
 }
 
 
 GridLaplase::~GridLaplase()
 {
+
 }

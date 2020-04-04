@@ -24,6 +24,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GridHeat.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="TaskHeat.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

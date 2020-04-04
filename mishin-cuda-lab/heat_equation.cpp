@@ -46,7 +46,7 @@ void conditions(double *U_n, double *U_n1, const int size_x, const int size_y)
 	{
 		for (int j = 0; j < size_y; j++)
 		{
-			// Begin conditions
+			// Init conditions
 			if (i == j && i == size_x / 2)
 				U_n[i*size_x + j] = 1;
 			else
