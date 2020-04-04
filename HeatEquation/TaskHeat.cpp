@@ -4,9 +4,9 @@
 //#define u(i, j) u[(i)*n + (j)]
 //#define new_u(i, j) new_u[(i)*n + (j)]
 
-TaskHeat::TaskHeat(double _execution_time)
+TaskHeat::TaskHeat(double _time_max)
 {
-	execution_time = _execution_time;
+	time_max = _time_max;
 	grid = GridHeat(1.0, 1.0, 0.1, 0.1);
 	setInitConditions();
 }
@@ -17,24 +17,24 @@ TaskHeat::~TaskHeat()
 
 void TaskHeat::setInitConditions()
 {
-	n = grid.steps_x;
-	m = grid.steps_y;
+	size_x = grid.steps_x;
+	size_y = grid.steps_y;
 
-	u = new double[n*m];
-	new_u = new double[n*m];
+	u = new double[size_x*size_y];
+	new_u = new double[size_x*size_y];
 
-	u_d = new double[n*m];
-	new_u_d = new double[n*m];
+	u_d = new double[size_x*size_y];
+	new_u_d = new double[size_x*size_y];
 
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < size_x; i++)
 	{
-		for (int j = 0; j < m; j++)
+		for (int j = 0; j < size_y; j++)
 		{
-			u[i*n + j] = 0.0;
+			u[i*size_x + j] = 0.0;
 
 			if (grid.grid_x[i] == 0.5 && grid.grid_y[j] == 0.5)
 			{
-				u[i*n + j] = 1.0;
+				u[i*size_x + j] = 1.0;
 			}
 		}
 	}
@@ -50,23 +50,23 @@ void TaskHeat::compute_on_device()
 void TaskHeat::compute_on_host()
 {
 
-	dt = grid.dx * grid.dy;
+	dt = sqrt(grid.dx * grid.dy + grid.dx * grid.dy);
 
-	double time = 0.0;
+	double current_time = 0.0;
 	do
 	{
-		if (execution_time - time < dt)
-			dt = execution_time - time;
+		if (time_max - current_time < dt)
+			dt = time_max - current_time;
 
-		calc_u(new_u, u, dt, grid.dx, grid.dy, 1/grid.dx*grid.dx, 1/grid.dy*grid.dy, n, m);
+		calc_u(new_u, u, dt, 1/grid.dx*grid.dx, 1/grid.dy*grid.dy, size_x, size_y);
 		
 		tmp = u;
 		u = new_u;
 		new_u = tmp;
 
-		time += dt;
+		current_time += dt;
 		
-	} while (time < execution_time);
+	} while (current_time  < time_max);
 }
 
 void TaskHeat::writeValues(/*double time*/)
@@ -77,11 +77,11 @@ void TaskHeat::writeValues(/*double time*/)
 
 	//out << "time :" << time << std::endl << std::endl;
 
-	for (int i = 0; i < n; i++)
-		for (int j = 0; j < m; j++)
+	for (int i = 0; i < size_x; i++)
+		for (int j = 0; j < size_y; j++)
 		{
-			out << u[i*n + j] << " ";
-			if (j == m - 1)
+			out << u[i*size_x + j] << " ";
+			if (j == size_y - 1)
 			{
 				out << std::endl;
 			}
@@ -91,7 +91,7 @@ void TaskHeat::writeValues(/*double time*/)
 }
 
 
-void calc_u(double *new_u, const double *u, const double tau, const double hx, const double hy, const double const_x, const double const_y, const int size_x, const int size_y)
+void calc_u(double *new_u, const double *u, const double tau, const double const_x, const double const_y, const int size_x, const int size_y)
 {
 	for (int i = 0; i < size_x*size_y; i++)
 	{

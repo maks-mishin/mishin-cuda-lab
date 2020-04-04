@@ -4,7 +4,7 @@
 class TaskHeat
 {
 public:
-	TaskHeat(double _execution_time);
+	TaskHeat(double _time_max);
 	~TaskHeat();
 
 	void setInitConditions();
@@ -16,7 +16,7 @@ public:
 private:
 	GridHeat grid;
 
-	int n, m;
+	int size_x, size_y;
 
 	double *u;
 	double *old_u;
@@ -28,8 +28,8 @@ private:
 	double *new_u_d;
 
 
-	double execution_time;
+	double time_max;
 	double dt;
 };
 
-void calc_u(double *new_u, const double *u, const double tau, const double hx, const double hy, const double const_x, const double const_y, const int size_x, const int size_y);
+void calc_u(double *new_u, const double *u, const double tau, const double const_x, const double const_y, const int size_x, const int size_y);

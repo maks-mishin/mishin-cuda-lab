@@ -11,7 +11,7 @@ int main()
 
 	//TaskHeat taskDevice(10.0);
 	TaskHeat taskHost(10.0);
-	taskHost.writeValues();
+	
 	//////Device
 	//start_execution_time = omp_get_wtime();
 
@@ -31,6 +31,8 @@ int main()
 
 	//end_execution_time = omp_get_wtime();
 	end_execution_time = clock();
+
+	taskHost.writeValues();
 
 	printf("Execution time on Host = %lf \n", (double)(end_execution_time - start_execution_time)/CLOCKS_PER_SEC);
 
