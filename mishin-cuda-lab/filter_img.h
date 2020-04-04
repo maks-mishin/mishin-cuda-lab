@@ -1,7 +1,5 @@
 #pragma once
-// file filter_img.h
-#include "params.h"
-
+#include "common.h"
 
 // Size of array short int
 const int byte_size = SIZE * sizeof(short);
@@ -29,7 +27,7 @@ void init_SOA(Picture picture);
 void init_AOS(Pixel *vec_pixels);
 
 //Function print matrix with use pattern SOA
-void print_matrix(Picture &picture);
+void print_matrix(Picture picture);
 
 //Function print matrix with use pattern AOS
 void print_matrix(Pixel *vec_pixels);
@@ -43,5 +41,7 @@ void filter_AOS_host(Pixel *vec_pixels, Pixel *vec_pixels_res);
 //__global__ void filter_SOA_device();
 //__global__ void filter_AOS_device();
 
+//Function for running program
+void filter_img_test();
 
 void free_SOA(Picture picture);

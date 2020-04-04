@@ -18,10 +18,18 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GridHeat.h" />
+    <ClInclude Include="TaskHeat.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GridHeat.cpp" />
+    <ClCompile Include="TaskHeat.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F8C352E2-2E8E-4EF3-B752-3C58B883D965}</ProjectGuid>
+    <ProjectGuid>{CF436513-8010-4544-AE87-8323D8126C82}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>mishincudalab</RootNamespace>
+    <RootNamespace>HeatEquation</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -145,18 +153,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="filter_img.h" />
-    <ClInclude Include="heat_equation.h" />
-    <ClInclude Include="matrix_multiplication.h" />
-    <ClInclude Include="common.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="filter_img.cpp" />
-    <ClCompile Include="heat_equation.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="matrix_multiplication.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

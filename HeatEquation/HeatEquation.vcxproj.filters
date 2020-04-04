@@ -15,30 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="filter_img.h">
+    <ClInclude Include="GridHeat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="matrix_multiplication.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="common.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="heat_equation.h">
+    <ClInclude Include="TaskHeat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="filter_img.cpp">
+    <ClCompile Include="GridHeat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="matrix_multiplication.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="heat_equation.cpp">
+    <ClCompile Include="TaskHeat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

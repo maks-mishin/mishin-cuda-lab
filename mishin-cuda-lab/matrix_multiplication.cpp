@@ -6,19 +6,12 @@
 #include <ctime>
 #include <math.h>
 #include <cstdlib>
-#include "params.h"
+#include "common.h"
 #include "matrix_multiplication.h"
 
-//Make random number from min to max
-float get_random_number(int min, int max)
-{
-	static const double fraction = 1.0 / (static_cast<double>(RAND_MAX) + 1.0);
-	return static_cast<float>(rand() * fraction * (max - min + 1) + min);
-}
 
 //Function print matrix
-template<class T>
-void print_matrix(const T *Matrix)
+void print_matrix(float *Matrix)
 {
 	for (int i = 0; i < SIZE; i++)
 	{

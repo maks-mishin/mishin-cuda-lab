@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F8C352E2-2E8E-4EF3-B752-3C58B883D965}</ProjectGuid>
+    <ProjectGuid>{4D069408-682D-43EF-8AC3-7A291C825306}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>mishincudalab</RootNamespace>
+    <RootNamespace>LaplaseEquation</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -146,16 +146,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="filter_img.h" />
-    <ClInclude Include="heat_equation.h" />
-    <ClInclude Include="matrix_multiplication.h" />
-    <ClInclude Include="common.h" />
+    <ClInclude Include="GridLaplase.h" />
+    <ClInclude Include="TaksLaplase.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="filter_img.cpp" />
-    <ClCompile Include="heat_equation.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="matrix_multiplication.cpp" />
+    <ClCompile Include="GridLaplase.cpp" />
+    <ClCompile Include="TaksLaplase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
