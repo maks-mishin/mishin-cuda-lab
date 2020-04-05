@@ -146,11 +146,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GridLaplase.h" />
+    <ClInclude Include="calculation.h" />
     <ClInclude Include="TaksLaplase.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GridLaplase.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="TaksLaplase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
