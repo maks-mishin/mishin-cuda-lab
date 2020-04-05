@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="calculation.h" />
     <ClInclude Include="GridHeat.h" />
     <ClInclude Include="TaskHeat.h" />
   </ItemGroup>
