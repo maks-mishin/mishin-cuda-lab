@@ -147,11 +147,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="calculation.h" />
-    <ClInclude Include="TaksLaplase.h" />
+    <ClInclude Include="Grid.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TaksLaplase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
